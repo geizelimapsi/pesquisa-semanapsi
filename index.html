@@ -120,6 +120,7 @@
             line-height: 1.8;
             color: #5a5a5a;
             margin-bottom: 30px;
+            font-size: 14px;
         }
 
         .intro-text h2 {
@@ -132,7 +133,7 @@
 
         .intro-text p {
             margin-bottom: 16px;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .form-group {
@@ -158,7 +159,7 @@
         .radio-option,
         .checkbox-option {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             padding: 12px 15px;
             background: #faf7f2;
             border-radius: 8px;
@@ -176,10 +177,12 @@
         .radio-option input,
         .checkbox-option input {
             margin-right: 12px;
+            margin-top: 3px;
             cursor: pointer;
             width: 18px;
             height: 18px;
             accent-color: #7d4a5f;
+            flex-shrink: 0;
         }
 
         .radio-option label,
@@ -191,6 +194,18 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             color: #5a5a5a;
+        }
+
+        .outro-textarea-wrapper {
+            margin-top: 12px;
+            padding: 12px 15px;
+            background: #faf7f2;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .outro-textarea-wrapper.show {
+            display: block;
         }
 
         textarea {
@@ -220,8 +235,8 @@
             border-radius: 8px;
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
-            transition: border-color 0.3s ease;
             color: #5a5a5a;
+            transition: border-color 0.3s ease;
         }
 
         input[type="text"]:focus,
@@ -231,26 +246,16 @@
             background: #faf7f2;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .button-group {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-top: 40px;
             justify-content: space-between;
         }
 
-        button {
+        .btn-primary,
+        .btn-secondary,
+        .btn-link {
             padding: 14px 28px;
             border: none;
             border-radius: 8px;
@@ -260,7 +265,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
@@ -274,257 +279,245 @@
             box-shadow: 0 8px 20px rgba(125, 74, 95, 0.3);
         }
 
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
         .btn-secondary {
-            background: #e8d4c8;
+            background: #f0e5d8;
             color: #7d4a5f;
             flex: 1;
         }
 
         .btn-secondary:hover {
-            background: #d4c0b3;
+            background: #e8d4c8;
         }
 
         .btn-link {
             background: #d4af7a;
-            color: white;
-            flex: 1;
+            color: #5f3f52;
+            padding: 16px 40px;
+            font-size: 16px;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
         }
 
         .btn-link:hover {
-            background: #c9a86f;
+            background: #c99a5c;
             transform: translateY(-2px);
-        }
-
-        .thanks-section {
-            text-align: center;
-        }
-
-        .thanks-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            color: #7d4a5f;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .thanks-section p {
-            color: #5a5a5a;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .gift-image {
-            max-width: 250px;
-            height: auto;
-            margin: 30px auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(139, 111, 94, 0.2);
+            box-shadow: 0 8px 20px rgba(212, 175, 122, 0.3);
         }
 
         .saved-indicator {
             display: none;
             color: #7d4a5f;
             font-size: 12px;
-            margin-top: 8px;
             font-weight: 600;
+            margin-top: 5px;
         }
 
         .saved-indicator.show {
             display: block;
-            animation: slideIn 0.3s ease;
+            animation: fadeOut 2s ease-out;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-5px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
-        .progress-text {
-            color: #d4af7a;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
+        .thanks-section {
             text-align: center;
+            padding: 20px 0;
         }
 
-        @media (max-width: 600px) {
-            .header {
-                padding: 30px 20px;
-            }
+        .thanks-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: #7d4a5f;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
 
-            .header h1 {
-                font-size: 24px;
-            }
+        .thanks-section p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #5a5a5a;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
 
-            .tab-content {
-                padding: 25px 20px;
-                min-height: auto;
-            }
+        .gift-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(139, 111, 94, 0.15);
+        }
 
-            .tabs {
-                flex-wrap: wrap;
-            }
+        .gift-download-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5e6d3 0%, #ead5c1 100%);
+            border-radius: 8px;
+        }
 
-            .tab-btn {
-                font-size: 11px;
-                padding: 12px 8px;
-            }
+        .gift-download-section p {
+            font-size: 14px;
+            color: #5a5a5a;
+            margin-bottom: 20px;
+        }
 
-            .button-group {
-                flex-direction: column;
-            }
+        .btn-download {
+            background: #d4af7a;
+            color: #5f3f52;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #c99a5c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 122, 0.3);
+        }
+
+        .btn-download-secondary {
+            background: #7d4a5f;
+            color: #d4af7a;
+            margin-left: 12px;
+        }
+
+        .btn-download-secondary:hover {
+            background: #5f3f52;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAGQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhYWGh4iJipKTlJWWm5ydhYaGiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhYWGh4iJipKTlJWWm5ydhYaGiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z" alt="Geize Lima">
+            <img src="https://raw.githubusercontent.com/geizelimapsi/pesquisa-semanapsi/main/images/geize-lima.jpg" alt="Geize Lima">
             <h1>Semana do Psicólogo</h1>
-            <p>Sua voz importa</p>
+            <p>Pesquisa rápida para entender seus desafios</p>
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="showTab(0)" id="tab-0">Introdução</button>
-            <button class="tab-btn disabled" onclick="showTab(1)" id="tab-1">Perguntas Fechadas</button>
-            <button class="tab-btn disabled" onclick="showTab(2)" id="tab-2">Perguntas Abertas</button>
-            <button class="tab-btn disabled" onclick="showTab(3)" id="tab-3">Obrigado</button>
+            <button class="tab-btn active" onclick="showTab(0)">Apresentação</button>
+            <button class="tab-btn" onclick="showTab(1)">Suas Respostas</button>
+            <button class="tab-btn" onclick="showTab(2)">Perguntas Abertas</button>
+            <button class="tab-btn" onclick="showTab(3)">Obrigado!</button>
         </div>
 
         <form id="pesquisaForm">
-            <!-- ABA 1: INTRODUÇÃO -->
+            <!-- ABA 0: INTRODUÇÃO -->
             <div class="tab-content active">
                 <div class="intro-text">
-                    <h2>Semana do Psicólogo</h2>
-                    <p>Oi, psicóloga e terapeuta.</p>
-                    <p>Estamos em um momento de transição na forma como a gente trabalha. As ferramentas mudaram. Os clientes mudaram. A forma de se posicionar, também.</p>
-                    <p>Mas uma coisa continua igual: as dores reais de quem trabalha com a psicologia e terapia.</p>
-                    <p>Por isso, aproveitando o dia 27 de agosto, que é o dia do psicólogo, vou fazer a semana do psicólogo de 27 a 31 de agosto. E pra que eu saiba exatamente como atender a necessidade de vocês, o que vocês estão precisando agora, estou fazendo uma pesquisa diferente.</p>
-                    <p>Não é aquela coisa genérica de "quanto você fatura" ou "quantos clientes você tem".</p>
-                    <p>Quero saber de verdade: onde dói? O que você precisa resolver AGORA? Qual é o passo que falta? O que chegaria a tempo de mudar o jogo pra você?</p>
-                    <p>Seus insights vão orientar os produtos e soluções que estou criando especialmente para psicólogas e terapeutas como você. E como agradecimento e retribuição pelo seu tempo e honestidade, você vai receber um presente exclusivo.</p>
-                    <p>A gente acredita que a melhor forma de criar soluções é ouvindo quem realmente vive o desafio.</p>
-                    <p>Obrigada por estar aqui.</p>
+                    <h2>Bem-vinda à Semana do Psicólogo</h2>
+                    <p>Criamos essa pesquisa rápida para entender melhor os desafios e oportunidades que atravessam a rotina das psicólogas e terapeutas como você.</p>
+                    <p>Suas respostas são confidenciais e vão orientar os produtos, estratégias e conteúdos que estou desenvolvendo especialmente para o universo feminino da psicologia.</p>
+                    <p style="margin-top: 30px; font-weight: 600; color: #7d4a5f;">⏱️ Tempo estimado: 5 minutos</p>
                 </div>
-                <div class="button-group">
-                    <button type="button" class="btn-primary" onclick="showTab(1)">Vamos →</button>
+
+                <div class="form-group">
+                    <label for="nome">Seu Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Como você gostaria de ser chamada?" required>
+                    <div class="saved-indicator"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp (com DDD)</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(21) 98765-4321" required>
+                    <div class="saved-indicator"></div>
+                </div>
+
+                <div class="button-group" style="margin-top: 40px;">
+                    <button type="button" class="btn-primary" onclick="showTab(1)" style="flex: 1;">Continuar →</button>
                 </div>
             </div>
 
-            <!-- ABA 2: PERGUNTAS FECHADAS + DADOS -->
+            <!-- ABA 1: PERGUNTAS FECHADAS -->
             <div class="tab-content">
-                <div class="progress-text">ABA 2 DE 3</div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="nome">Seu Nome</label>
-                        <input type="text" id="nome" name="nome" placeholder="Como você se chama?" required>
-                        <div class="saved-indicator"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp com DDD</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
-                        <div class="saved-indicator"></div>
-                    </div>
-                </div>
-
                 <div class="form-group">
-                    <label>Hoje, você trabalha principalmente como?</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="p1_1" name="pergunta1" value="Clínica individual">
-                            <label for="p1_1">Clínica individual</label>
+                    <label>1. Como você trabalha atualmente? (marque quantas for necessário)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q1-clinica" name="pergunta1" value="Clínica - atendo pacientes presencialmente">
+                            <label for="q1-clinica">Clínica - atendo pacientes presencialmente</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p1_2" name="pergunta1" value="Clínica + grupos">
-                            <label for="p1_2">Clínica + grupos</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q1-online" name="pergunta1" value="Online - atendo pacientes por vídeo">
+                            <label for="q1-online">Online - atendo pacientes por vídeo</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p1_3" name="pergunta1" value="Só grupos/workshops">
-                            <label for="p1_3">Só grupos/workshops</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q1-infoprodutos" name="pergunta1" value="Infoprodutos - vendo cursos, e-books, templates">
+                            <label for="q1-infoprodutos">Infoprodutos - vendo cursos, e-books, templates</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p1_4" name="pergunta1" value="Consultoria/Assessoria">
-                            <label for="p1_4">Consultoria/Assessoria</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q1-mentorias" name="pergunta1" value="Mentorias - oriento outras psicólogas/terapeutas">
+                            <label for="q1-mentorias">Mentorias - oriento outras psicólogas/terapeutas</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p1_5" name="pergunta1" value="Preciso de mais clientes pro consultório">
-                            <label for="p1_5">Preciso de mais clientes pro consultório</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q1-outro" name="pergunta1" value="outro" onchange="toggleOutroTextarea('outro-p1')">
+                            <label for="q1-outro">Outra forma - explique abaixo</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p1_6" name="pergunta1" value="Ainda não tenho modelo fixo">
-                            <label for="p1_6">Ainda não tenho modelo fixo</label>
-                        </div>
+                    </div>
+                    <div class="outro-textarea-wrapper" id="outro-p1">
+                        <textarea id="pergunta1-outro" name="pergunta1-outro" placeholder="Como você trabalha..."></textarea>
                     </div>
                     <div class="saved-indicator"></div>
                 </div>
 
                 <div class="form-group">
-                    <label>Se você tivesse que escolher UMA coisa que mais te desespera agora em 2026, qual seria?</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="p2_1" name="pergunta2" value="Não consigo cobrar o que realmente vale">
-                            <label for="p2_1">Não consigo cobrar o que realmente vale</label>
+                    <label>2. Qual é sua principal dificuldade AGORA? (marque quantas for necessário)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q2-dinheiro" name="pergunta2" value="Preciso fazer mais dinheiro, mas não sei como">
+                            <label for="q2-dinheiro">Preciso fazer mais dinheiro, mas não sei como</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p2_2" name="pergunta2" value="Não sei como crescer além da clínica individual">
-                            <label for="p2_2">Não sei como crescer além da clínica individual</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q2-presenca" name="pergunta2" value="Presença digital - não consigo vender pelo Instagram/redes sociais">
+                            <label for="q2-presenca">Presença digital - não consigo vender pelo Instagram/redes sociais</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p2_3" name="pergunta2" value="Meu Instagram não gera leads de qualidade">
-                            <label for="p2_3">Meu Instagram não gera leads de qualidade</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q2-pacientes" name="pergunta2" value="Falta de clientes/pacientes - agenda vazia">
+                            <label for="q2-pacientes">Falta de clientes/pacientes - agenda vazia</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p2_4" name="pergunta2" value="Não tenho um posicionamento claro">
-                            <label for="p2_4">Não tenho um posicionamento claro</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q2-tempo" name="pergunta2" value="Falta de tempo - atendo demais e não ganho o suficiente">
+                            <label for="q2-tempo">Falta de tempo - atendo demais e não ganho o suficiente</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p2_5" name="pergunta2" value="Falta tempo e estrutura para escalar">
-                            <label for="p2_5">Falta tempo e estrutura para escalar</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q2-outro" name="pergunta2" value="outro" onchange="toggleOutroTextarea('outro-p2')">
+                            <label for="q2-outro">Outra dor - explique abaixo</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p2_6" name="pergunta2" value="Outra">
-                            <label for="p2_6">Outra</label>
-                        </div>
+                    </div>
+                    <div class="outro-textarea-wrapper" id="outro-p2">
+                        <textarea id="pergunta2-outro" name="pergunta2-outro" placeholder="Qual é seu maior desafio..."></textarea>
                     </div>
                     <div class="saved-indicator"></div>
                 </div>
 
                 <div class="form-group">
-                    <label>Você estaria aberta a investir em uma solução estruturada nesse segundo semestre?</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="p3_1" name="pergunta3" value="Sim, com certeza">
-                            <label for="p3_1">Sim, com certeza</label>
+                    <label>3. Qual é seu maior sonho profissional? (marque quantas for necessário)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q3-escalabilidade" name="pergunta3" value="Escalabilidade - trabalhar menos atendendo mais pessoas">
+                            <label for="q3-escalabilidade">Escalabilidade - trabalhar menos atendendo mais pessoas</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p3_2" name="pergunta3" value="Sim, mas precisa fazer sentido financeiro">
-                            <label for="p3_2">Sim, mas precisa fazer sentido financeiro</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q3-reconhecimento" name="pergunta3" value="Ser reconhecida como referência na minha área">
+                            <label for="q3-reconhecimento">Ser reconhecida como referência na minha área</label>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p3_3" name="pergunta3" value="Talvez, preciso pensar">
-                            <label for="p3_3">Talvez, preciso pensar</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p3_4" name="pergunta3" value="Não agora">
-                            <label for="p3_4">Não agora</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="p3_5" name="pergunta3" value="Não sei ainda">
-                            <label for="p3_5">Não sei ainda</label>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="q3-liberdade" name="pergunta3" value="Liberdade financeira e de horários">
+                            <label for="q3-liberdade">Liberdade financeira e de horários</label>
                         </div>
                     </div>
                     <div class="saved-indicator"></div>
@@ -532,29 +525,27 @@
 
                 <div class="button-group">
                     <button type="button" class="btn-secondary" onclick="showTab(0)">← Voltar</button>
-                    <button type="button" class="btn-primary" onclick="showTab(2)">Próximo →</button>
+                    <button type="button" class="btn-primary" onclick="showTab(2)">Continuar →</button>
                 </div>
             </div>
 
-            <!-- ABA 3: PERGUNTAS ABERTAS -->
+            <!-- ABA 2: PERGUNTAS ABERTAS -->
             <div class="tab-content">
-                <div class="progress-text">ABA 3 DE 3</div>
-
                 <div class="form-group">
-                    <label for="pergunta4">De todos os psicólogos e terapeutas que você conhece, qual é o desespero REAL que eles têm agora em 2026? Aquilo que eles sussurram quando ninguém tá ouvindo?</label>
-                    <textarea id="pergunta4" name="pergunta4" placeholder="Sua resposta..."></textarea>
+                    <label for="pergunta4">4. O que você já tentou fazer para resolver sua principal dificuldade? Teve algum resultado?</label>
+                    <textarea id="pergunta4" name="pergunta4" placeholder="Conte sua história..." required></textarea>
                     <div class="saved-indicator"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="pergunta5">Se você tivesse 1 semana de férias e voltasse com uma solução pronta na mão que mudasse o jogo, o que seria? Um produto? Um serviço? Uma estrutura de negócio? Uma ferramenta? Me descreve.</label>
-                    <textarea id="pergunta5" name="pergunta5" placeholder="Sua resposta..."></textarea>
+                    <label for="pergunta5">5. Se tivesse um "mapa pronto" para sair dessa situação, qual seria o próximo passo que você gostaria de dar?</label>
+                    <textarea id="pergunta5" name="pergunta5" placeholder="Sua resposta..." required></textarea>
                     <div class="saved-indicator"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="pergunta6">Qual é aquele assunto sobre negócio, presença digital ou forma de trabalhar que você gostaria muito de entender melhor, mas ninguém nunca te ensinou de verdade?</label>
-                    <textarea id="pergunta6" name="pergunta6" placeholder="Sua resposta..."></textarea>
+                    <label for="pergunta6">6. Qual é aquele assunto sobre negócio, presença digital ou forma de trabalhar que você gostaria muito de entender melhor, mas ninguém nunca te ensinou de verdade?</label>
+                    <textarea id="pergunta6" name="pergunta6" placeholder="Sua resposta..." required></textarea>
                     <div class="saved-indicator"></div>
                 </div>
 
@@ -564,22 +555,27 @@
                 </div>
             </div>
 
-            <!-- ABA 4: OBRIGADO -->
+            <!-- ABA 3: OBRIGADO -->
             <div class="tab-content">
                 <div class="thanks-section">
-                    <h2>Obrigada! 💜</h2>
-                    <p>Suas respostas foram recebidas com sucesso e vão orientar os produtos que estou criando especialmente para você.</p>
-                    <p>Como agradecimento e retribuição, prepare-se para receber um presente exclusivo em breve!</p>
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAC4ALgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhYWGh4iJipKTlJWWm5ydhYaGiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWm5ydhIWGh4iJipKTlJWWm5ydhYWGh4iJipKTlJWWm5ydhYaGiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z" alt="5 Verdades Sobre o Feminino" class="gift-image">
-                    <p style="margin-bottom: 40px; font-style: italic; font-size: 14px;">Prepare-se! Seu presente especial está chegando</p>
-                    <a href="https://chk.eduzz.com/69K18GE7WO" target="_blank" class="btn-link" style="text-decoration: none; display: inline-block;">Acessar Presente →</a>
+                    <h2 style="font-size: 20px;">Obrigada! 💜</h2>
+                    <p style="font-size: 14px;">Suas respostas foram recebidas com sucesso e vão orientar os produtos que estou criando especialmente para você.</p>
+                    
+                    <div class="gift-download-section">
+                        <p style="font-size: 14px; font-weight: 600; color: #7d4a5f;">Como agradecimento e retribuição:</p>
+                        <p style="font-size: 14px;">Preparei um presente exclusivo para você com licença para revender como sua autora.</p>
+                        <img src="https://raw.githubusercontent.com/geizelimapsi/pesquisa-semanapsi/main/images/presente.jpg" alt="Seu Presente" class="gift-image" style="max-width: 300px; margin: 20px 0;">
+                        <button type="button" class="btn-download" onclick="downloadPresent()">⬇️ Baixar Meu Presente</button>
+                    </div>
+                    
+                    <p style="font-size: 14px; margin-top: 30px; color: #7d4a5f; font-style: italic;">Essa é minha maneira de agradecer sua participação e generosidade em compartilhar suas experiências comigo.</p>
                 </div>
             </div>
         </form>
     </div>
 
     <script>
-        const API_URL = 'https://script.google.com/macros/s/AKfycbySht_dQ2GdwW_HuVz9tUJxKH4qGVKezEjIlqanqcAUfId82TDS3OG8n2O1C8pH4976_w/exec';
+        const API_URL = 'https://script.google.com/macros/library/d/1tVsUZwF14UkrBAbvEPHIFfw9XKaIipbOCRbFV-zE5mXNdI3XG1LNEYSX/2';
         const STORAGE_KEY = 'pesquisa_psicologo_data';
 
         // Carregar dados salvos ao iniciar
@@ -589,35 +585,51 @@
             updateTabButtons();
         });
 
-        function validateTab(fromIndex, toIndex) {
-            // Aba 0 (intro) - sem validação
-            if (fromIndex === 0) {
-                return true;
-            }
+        function toggleOutroTextarea(wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            const checkbox = wrapper.previousElementSibling.querySelector('input[type="checkbox"][value="outro"]');
             
-            // Aba 1 (fechadas) - valida intro
-            if (fromIndex === 1 && toIndex === 2) {
+            if (checkbox.checked) {
+                wrapper.classList.add('show');
+            } else {
+                wrapper.classList.remove('show');
+            }
+        }
+
+        function validateTab(fromIndex, toIndex) {
+            // Aba 0 (intro) - validar nome e whatsapp
+            if (fromIndex === 0 && toIndex === 1) {
                 const nome = document.getElementById('nome').value.trim();
                 const whatsapp = document.getElementById('whatsapp').value.trim();
-                const p1 = document.querySelector('input[name="pergunta1"]:checked');
-                const p2 = document.querySelector('input[name="pergunta2"]:checked');
-                const p3 = document.querySelector('input[name="pergunta3"]:checked');
                 
-                if (!nome || !whatsapp || !p1 || !p2 || !p3) {
-                    alert('Por favor, preencha TODAS as perguntas antes de continuar.');
+                if (!nome || !whatsapp) {
+                    alert('Por favor, preencha seu nome e WhatsApp para continuar.');
                     return false;
                 }
                 return true;
             }
             
-            // Aba 2 (abertas) - valida aba 1
+            // Aba 1 (fechadas) - valida ao tentar ir para aba 2
+            if (fromIndex === 1 && toIndex === 2) {
+                const p1 = document.querySelectorAll('input[name="pergunta1"]:checked').length;
+                const p2 = document.querySelectorAll('input[name="pergunta2"]:checked').length;
+                const p3 = document.querySelectorAll('input[name="pergunta3"]:checked').length;
+                
+                if (p1 === 0 || p2 === 0 || p3 === 0) {
+                    alert('Por favor, responda TODAS as perguntas antes de continuar.');
+                    return false;
+                }
+                return true;
+            }
+            
+            // Aba 2 (abertas) - valida ao tentar enviar
             if (fromIndex === 2 && toIndex === 3) {
                 const p4 = document.getElementById('pergunta4').value.trim();
                 const p5 = document.getElementById('pergunta5').value.trim();
                 const p6 = document.getElementById('pergunta6').value.trim();
                 
                 if (!p4 || !p5 || !p6) {
-                    alert('Por favor, responda TODAS as perguntas abertas antes de continuar.');
+                    alert('Por favor, responda TODAS as perguntas abertas antes de enviar.');
                     return false;
                 }
                 return true;
@@ -652,8 +664,6 @@
 
         function updateTabButtons() {
             const buttons = document.querySelectorAll('.tab-btn');
-            const currentTab = document.querySelector('.tab-content.active');
-            const currentIndex = Array.from(document.querySelectorAll('.tab-content')).indexOf(currentTab);
             
             // Aba 0 - sempre pode ver
             buttons[0].disabled = false;
@@ -664,16 +674,16 @@
             buttons[1].disabled = !(nome && whatsapp);
             
             // Aba 2 - vê se aba 1 está completa
-            const p1 = document.querySelector('input[name="pergunta1"]:checked');
-            const p2 = document.querySelector('input[name="pergunta2"]:checked');
-            const p3 = document.querySelector('input[name="pergunta3"]:checked');
-            buttons[2].disabled = !(nome && whatsapp && p1 && p2 && p3);
+            const p1 = document.querySelectorAll('input[name="pergunta1"]:checked').length;
+            const p2 = document.querySelectorAll('input[name="pergunta2"]:checked').length;
+            const p3 = document.querySelectorAll('input[name="pergunta3"]:checked').length;
+            buttons[2].disabled = !(nome && whatsapp && p1 > 0 && p2 > 0 && p3 > 0);
             
             // Aba 3 - vê se aba 2 está completa
             const p4 = document.getElementById('pergunta4').value.trim();
             const p5 = document.getElementById('pergunta5').value.trim();
             const p6 = document.getElementById('pergunta6').value.trim();
-            buttons[3].disabled = !(p1 && p2 && p3 && p4 && p5 && p6);
+            buttons[3].disabled = !(p1 > 0 && p2 > 0 && p3 > 0 && p4 && p5 && p6);
         }
 
         function saveFormData() {
@@ -681,7 +691,21 @@
             const data = {};
             
             for (let [key, value] of formData.entries()) {
-                data[key] = value;
+                if (key.startsWith('pergunta')) {
+                    if (!data[key]) {
+                        data[key] = [];
+                    }
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Converter arrays em strings
+            for (let key in data) {
+                if (Array.isArray(data[key])) {
+                    data[key] = data[key].join('; ');
+                }
             }
             
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -694,15 +718,29 @@
                 const data = JSON.parse(saved);
                 
                 for (let [key, value] of Object.entries(data)) {
-                    const element = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
-                    
-                    if (element) {
-                        if (element.type === 'radio') {
-                            document.querySelector(`input[name="${key}"][value="${value}"]`).checked = true;
-                        } else {
+                    if (key.startsWith('pergunta') && key !== 'pergunta1-outro' && key !== 'pergunta2-outro') {
+                        // Valores múltiplos
+                        const values = value.split('; ');
+                        values.forEach(val => {
+                            const checkbox = document.querySelector(`input[name="${key}"][value="${val}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                            }
+                        });
+                    } else {
+                        const element = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                        if (element) {
                             element.value = value;
                         }
                     }
+                }
+                
+                // Mostrar textareas de "outro" se marcados
+                if (document.getElementById('q1-outro')?.checked) {
+                    document.getElementById('outro-p1').classList.add('show');
+                }
+                if (document.getElementById('q2-outro')?.checked) {
+                    document.getElementById('outro-p2').classList.add('show');
                 }
             }
         }
@@ -731,7 +769,11 @@
         }
 
         function showSavedIndicator(element) {
-            const indicator = element.parentElement.querySelector('.saved-indicator');
+            let indicator = element.parentElement.querySelector('.saved-indicator');
+            if (!indicator) {
+                indicator = element.closest('.form-group')?.querySelector('.saved-indicator');
+            }
+            
             if (indicator) {
                 indicator.classList.add('show');
                 indicator.textContent = '✓ Salvo';
@@ -746,9 +788,41 @@
         document.getElementById('pesquisaForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(document.getElementById('pesquisaForm'));
-            const data = Object.fromEntries(formData);
-            data.timestamp = new Date().toLocaleString('pt-BR');
+            // Coletar dados corretamente
+            const nome = document.getElementById('nome').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            
+            const p1 = Array.from(document.querySelectorAll('input[name="pergunta1"]:checked'))
+                .map(cb => cb.value)
+                .join('; ');
+            const p1outro = document.getElementById('pergunta1-outro').value || '';
+            
+            const p2 = Array.from(document.querySelectorAll('input[name="pergunta2"]:checked'))
+                .map(cb => cb.value)
+                .join('; ');
+            const p2outro = document.getElementById('pergunta2-outro').value || '';
+            
+            const p3 = Array.from(document.querySelectorAll('input[name="pergunta3"]:checked'))
+                .map(cb => cb.value)
+                .join('; ');
+            
+            const p4 = document.getElementById('pergunta4').value;
+            const p5 = document.getElementById('pergunta5').value;
+            const p6 = document.getElementById('pergunta6').value;
+
+            const data = {
+                nome,
+                whatsapp,
+                pergunta1: p1,
+                pergunta1_outro: p1outro,
+                pergunta2: p2,
+                pergunta2_outro: p2outro,
+                pergunta3: p3,
+                pergunta4: p4,
+                pergunta5: p5,
+                pergunta6: p6,
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
 
             try {
                 const response = await fetch(API_URL, {
@@ -760,13 +834,20 @@
                     localStorage.removeItem(STORAGE_KEY);
                     showTab(3);
                 } else {
-                    alert('Erro ao enviar. Tente novamente.');
+                    console.error('Resposta não OK:', response.status);
+                    alert('Erro ao enviar. Por favor, tente novamente.');
                 }
             } catch (error) {
                 console.error('Erro:', error);
-                alert('Erro ao enviar. Verifique sua conexão.');
+                alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
             }
         });
+
+        function downloadPresent() {
+            // Aqui você colocaria o link para baixar o presente
+            // Por enquanto, redireciona para o Eduzz
+            window.open('https://chk.eduzz.com/69K18GE7WO', '_blank');
+        }
     </script>
 </body>
 </html>
